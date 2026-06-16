@@ -968,14 +968,88 @@ input, select, textarea {
 					text-underline-offset: 4px;
 				}
 
+/* Hamburger button */
+
+	.hamburger {
+		display: none;
+		flex-direction: column;
+		justify-content: center;
+		gap: 5px;
+		background: none;
+		border: none;
+		outline: none;
+		cursor: pointer;
+		padding: 6px;
+		z-index: 1001;
+	}
+
+	.hamburger:focus,
+	.hamburger:focus-visible {
+		outline: none;
+		box-shadow: none;
+	}
+
+	.hamburger span {
+		display: block;
+		width: 22px;
+		height: 2px;
+		background: #1A1814;
+		border-radius: 2px;
+		transition: transform 0.3s ease, opacity 0.3s ease;
+	}
+
+	.hamburger.is-open span:nth-child(1) {
+		transform: translateY(7px) rotate(45deg);
+	}
+
+	.hamburger.is-open span:nth-child(2) {
+		opacity: 0;
+	}
+
+	.hamburger.is-open span:nth-child(3) {
+		transform: translateY(-7px) rotate(-45deg);
+	}
+
 	@media screen and (max-width: 736px) {
 
 		#header .inner {
 			padding: 1em 1.2em;
 		}
 
+		.hamburger {
+			display: flex;
+		}
+
+		#header nav {
+			display: none;
+			position: fixed;
+			top: 4.8em;
+			left: 0;
+			right: 0;
+			background: #F5F0E8;
+			border-bottom: 1px solid rgba(26, 24, 20, 0.1);
+			padding: 1.2em 1.5em 1.5em;
+			z-index: 1000;
+		}
+
+		#header nav.is-open {
+			display: block;
+		}
+
 		#header nav ul {
-			gap: 1.2em;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 0;
+		}
+
+		#header nav ul li {
+			width: 100%;
+		}
+
+		#header nav ul li a {
+			display: block;
+			padding: 0.7em 0;
+			font-size: 1em;
 		}
 
 	}
@@ -1776,6 +1850,61 @@ input, select, textarea {
 	#sayhello ul.actions {
 		justify-content: flex-start;
 		margin-top: 1.5em;
+	}
+
+}
+
+/* --- Project pages --- */
+
+@media screen and (max-width: 736px) {
+
+	.project-cover {
+		margin-top: -4em;
+	}
+
+	.project-cover img {
+		aspect-ratio: 4 / 3;
+	}
+
+	.project-tagline {
+		padding: 2em 0;
+	}
+
+	.project-tagline p {
+		font-size: 1.3em;
+	}
+
+	.project-description {
+		flex-direction: column;
+		gap: 2rem;
+		padding: 1.5rem 0;
+	}
+
+	.project-description-meta {
+		flex: none;
+	}
+
+	.image-grid {
+		flex-direction: column;
+		gap: 12px;
+	}
+
+	.image-grid img {
+		height: auto;
+		aspect-ratio: 4 / 3;
+		width: 100%;
+	}
+
+}
+
+@media screen and (max-width: 480px) {
+
+	.project-tagline p {
+		font-size: 1.1em;
+	}
+
+	.project-description-meta h1 {
+		font-size: 1.5rem;
 	}
 
 }

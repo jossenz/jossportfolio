@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <!--
 	Phantom by HTML5 UP
 	html5up.net | @ajlkn
@@ -29,10 +29,10 @@
           <!-- Nav -->
           <nav>
             <ul>
-              <li><a href="aboutme.html">about me</a></li>
-              <li><a href="archive.html">archive</a></li>
+              <li><a href="aboutme.html">ABOUT ME</a></li>
+              <li><a href="archive.html">ARCHIVE</a></li>
               <li>
-                <a href="sayhello.html" class="say-hello active">Say hello</a>
+                <a href="sayhello.html" class="say-hello active">SAY HI</a>
               </li>
             </ul>
           </nav>
@@ -61,9 +61,15 @@
             </div>
             <div class="sayhello-form">
               <p class="sayhello-form-label">Fill out the form below</p>
-              <div data-fs-success class="sayhello-toast">Thanks for your message, I'll be in touch ASAP!</div>
+              <div data-fs-success class="sayhello-toast">
+                Thanks for your message, I'll be in touch ASAP!
+              </div>
               <div data-fs-error class="sayhello-error"></div>
-              <form id="sayhello-form" method="post" action="https://formspree.io/f/mjgdzlav">
+              <form
+                id="sayhello-form"
+                method="post"
+                action="https://formspree.io/f/mjgdzlav"
+              >
                 <div class="fields">
                   <div class="field">
                     <label class="sayhello-field-label">Name</label>
@@ -119,7 +125,12 @@
                 </div>
                 <ul class="actions">
                   <li>
-                    <input type="submit" value="submit" class="primary" data-fs-submit-btn />
+                    <input
+                      type="submit"
+                      value="submit"
+                      class="primary"
+                      data-fs-submit-btn
+                    />
                   </li>
                 </ul>
               </form>
@@ -134,9 +145,9 @@
           <div class="footer-bottom">
             <ul class="copyright">
               <li>
-                Jossen Zambrano &nbsp;|&nbsp; jossenzr@gmail.com &nbsp;|&nbsp;
-                &copy; 2026 &nbsp;|&nbsp; 📍 Based in Madrid.
-                <span class="footer-available">available worldwide</span>
+                Jossen Zambrano<span class="footer-extra"> &nbsp;|&nbsp; jossenzr@gmail.com</span>
+                &nbsp;|&nbsp; &copy; 2026<span class="footer-extra"> &nbsp;|&nbsp; 📍 Based in Madrid.</span>
+                <span class="footer-available footer-extra">available worldwide</span>
               </li>
             </ul>
             <section class="footer-social">
@@ -170,18 +181,27 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
     <script>
-      window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
-      formspree('initForm', { formElement: '#sayhello-form', formId: 'mjgdzlav' });
+      window.formspree =
+        window.formspree ||
+        function () {
+          (formspree.q = formspree.q || []).push(arguments);
+        };
+      formspree("initForm", {
+        formElement: "#sayhello-form",
+        formId: "mjgdzlav",
+      });
 
-      var toast = document.querySelector('[data-fs-success]');
-      new MutationObserver(function() {
-        if (toast.style.display !== 'none' && toast.style.display !== '') {
-          setTimeout(function() {
-            toast.classList.add('sayhello-toast--out');
-            setTimeout(function() { toast.style.display = 'none'; }, 350);
+      var toast = document.querySelector("[data-fs-success]");
+      new MutationObserver(function () {
+        if (toast.style.display !== "none" && toast.style.display !== "") {
+          setTimeout(function () {
+            toast.classList.add("sayhello-toast--out");
+            setTimeout(function () {
+              toast.style.display = "none";
+            }, 350);
           }, 5000);
         }
-      }).observe(toast, { attributes: true, attributeFilter: ['style'] });
+      }).observe(toast, { attributes: true, attributeFilter: ["style"] });
     </script>
     <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
   </body>

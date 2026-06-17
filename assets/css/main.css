@@ -1131,6 +1131,10 @@ input, select, textarea {
 			font-weight: 700;
 		}
 
+		#intro .intro-break {
+			display: none;
+		}
+
 	@media screen and (max-width: 736px) {
 
 		#intro {
@@ -1138,12 +1142,16 @@ input, select, textarea {
 		}
 
 		#intro .intro-greeting {
-			font-size: clamp(2.2em, 10vw, 3.2em);
+			font-size: clamp(1.9em, 8vw, 2.7em);
 		}
 
 		#intro .intro-bio {
 			font-size: clamp(0.95em, 4vw, 1.2em);
-			max-width: 16em;
+			max-width: 26em;
+		}
+
+		#intro .intro-break {
+			display: inline;
 		}
 
 	}
@@ -1708,12 +1716,12 @@ input, select, textarea {
 	}
 
 	#intro .intro-greeting {
-		font-size: clamp(2.4em, 16vw, 3.4em);
+		font-size: clamp(2em, 13vw, 2.9em);
 	}
 
 	#intro .intro-bio {
-		font-size: 1.05em;
-		max-width: 13em;
+		font-size: 0.9em;
+		max-width: 24em;
 	}
 
 }

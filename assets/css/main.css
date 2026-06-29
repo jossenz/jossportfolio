@@ -1131,14 +1131,6 @@ input, select, textarea {
 			font-weight: 700;
 		}
 
-		#intro .brk-desktop {
-			display: inline;
-		}
-
-		#intro .brk-mobile {
-			display: none;
-		}
-
 	@media screen and (max-width: 736px) {
 
 		#intro {
@@ -1152,14 +1144,6 @@ input, select, textarea {
 		#intro .intro-bio {
 			font-size: clamp(0.95em, 4vw, 1.2em);
 			max-width: 26em;
-		}
-
-		#intro .brk-desktop {
-			display: none;
-		}
-
-		#intro .brk-mobile {
-			display: inline;
 		}
 
 	}

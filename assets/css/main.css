@@ -1192,6 +1192,12 @@ input, select, textarea {
 			max-width: 26em;
 		}
 
+		#intro .intro-greeting,
+		#intro .intro-bio,
+		#intro .intro-key {
+			animation: none;
+		}
+
 	}
 
 /* Main */

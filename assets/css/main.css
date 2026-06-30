@@ -982,13 +982,16 @@ input, select, textarea {
 	.hamburger {
 		display: none;
 		flex-direction: column;
+		align-items: center;
 		justify-content: center;
 		gap: 5px;
+		width: 26px;
+		height: 26px;
 		background: none;
 		border: none;
 		outline: none;
 		cursor: pointer;
-		padding: 6px;
+		padding: 0;
 		z-index: 1001;
 		box-shadow: none;
 	}
@@ -1026,8 +1029,12 @@ input, select, textarea {
 
 	.header-msg {
 		display: none;
+		align-items: center;
+		justify-content: center;
+		width: 26px;
+		height: 26px;
 		color: #1A1814;
-		font-size: 1.2em;
+		font-size: 22px;
 		line-height: 1;
 		z-index: 1001;
 		transition: color 0.2s ease;
@@ -1057,7 +1064,7 @@ input, select, textarea {
 		}
 
 		.header-msg {
-			display: inline-block;
+			display: inline-flex;
 		}
 
 		#header nav {

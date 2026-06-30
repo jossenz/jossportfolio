@@ -1022,36 +1022,65 @@ input, select, textarea {
 		transform: translateY(-7px) rotate(-45deg);
 	}
 
+	/* Header message icon */
+
+	.header-msg {
+		display: none;
+		color: #1A1814;
+		font-size: 1.2em;
+		line-height: 1;
+		z-index: 1001;
+		transition: color 0.2s ease;
+	}
+
+	.header-msg:hover {
+		color: #A599F2 !important;
+	}
+
 	@media screen and (max-width: 736px) {
 
 		#header .inner {
 			padding: 1em 1.2em;
+			position: relative;
+		}
+
+		#header .logo {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			text-align: center;
 		}
 
 		.hamburger {
 			display: flex;
 		}
 
+		.header-msg {
+			display: inline-block;
+		}
+
 		#header nav {
-			display: none;
 			position: fixed;
-			top: 4em;
+			top: 0;
 			left: 0;
-			right: 0;
-			background: #F5F0E8;
-			border-bottom: 1px solid rgba(26, 24, 20, 0.1);
-			padding: 1.2em 1.5em 1.5em;
+			bottom: 0;
+			width: 85%;
+			background: #E3D8F2;
+			padding: 5em 2em 2em;
 			z-index: 1000;
+			transform: translateX(-100%);
+			transition: transform 0.35s ease;
 		}
 
 		#header nav.is-open {
-			display: block;
+			transform: translateX(0);
 		}
 
 		#header nav ul {
 			flex-direction: column;
 			align-items: flex-start;
-			gap: 0;
+			gap: 0.4em;
 		}
 
 		#header nav ul li {
@@ -1060,8 +1089,8 @@ input, select, textarea {
 
 		#header nav ul li a {
 			display: block;
-			padding: 0.7em 0;
-			font-size: 1em;
+			padding: 0.5em 0;
+			font-size: 1.5em;
 		}
 
 	}

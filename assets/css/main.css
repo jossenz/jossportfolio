@@ -1800,12 +1800,7 @@ input, select, textarea {
 	}
 
 	#about-quote {
-		margin: 0 -1.25em -4em -1.25em;
-		padding: 2em 1.5em 4em 1.5em;
-	}
-
-	#about-quote p {
-		font-size: 2.2em;
+		display: none;
 	}
 
 }

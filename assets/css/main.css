@@ -116,6 +116,177 @@ input, select, textarea {
 		background: #F5F0E8;
 	}
 
+	/* Dark theme — applied site-wide via the "home" body class */
+	body.home {
+		background: #1A1814;
+		color: #FAF9F7;
+	}
+
+	/* Header: blended/transparent at top, off-white sticky pill once scrolled */
+	body.home #header {
+		background: transparent;
+		box-shadow: none;
+		transition: background-color 0.3s ease, box-shadow 0.3s ease;
+	}
+
+	body.home #header.scrolled {
+		background: rgba(232, 197, 71, 0.82);
+		box-shadow: 0 6px 24px rgba(26, 24, 20, 0.18);
+	}
+
+	/* Logo swaps with header state (all widths) */
+	body.home #header .logo {
+		color: #FAF9F7;
+	}
+
+	body.home #header.scrolled .logo,
+	body.home #header.menu-open .logo {
+		color: #1A1814;
+	}
+
+	/* Hamburger swaps with header state (mobile) */
+	body.home #header .hamburger span {
+		background: #FAF9F7;
+	}
+
+	body.home #header.scrolled .hamburger span,
+	body.home #header.menu-open .hamburger span {
+		background: #1A1814;
+	}
+
+	/* Nav links + CTA swap only where the nav is a bar (tablet/desktop) */
+	@media screen and (min-width: 737px) {
+
+		/* Say hi as a right-aligned CTA (About/Archive stay centered) */
+		body.home #header nav ul li:last-child {
+			position: absolute;
+			right: 2em;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		body.home #header nav ul li a {
+			color: #FAF9F7;
+		}
+
+		body.home #header.scrolled nav ul li a {
+			color: #1A1814;
+		}
+
+		body.home #header.scrolled nav ul li a:hover {
+			color: #FAF9F7 !important;
+		}
+
+		/* Current-page (active) link behaves like the others — no purple */
+		body.home #header nav ul li a.active {
+			color: #FAF9F7 !important;
+			font-weight: 400;
+			text-decoration: underline;
+			text-underline-offset: 4px;
+		}
+
+		body.home #header nav ul li a.active:hover {
+			color: #A599F2 !important;
+		}
+
+		body.home #header.scrolled nav ul li a.active {
+			color: #1A1814 !important;
+		}
+
+		body.home #header.scrolled nav ul li a.active:hover {
+			color: #FAF9F7 !important;
+		}
+
+		/* Filled pill CTA — Honey on the dark bar */
+		body.home #header nav ul li a.say-hello {
+			background: #E8C547;
+			box-shadow: none;
+			color: #1A1814;
+			font-weight: 400;
+			text-decoration: none;
+		}
+
+		body.home #header nav ul li a.say-hello:hover {
+			background: #f0d264;
+			color: #1A1814 !important;
+			box-shadow: none;
+			text-decoration: none;
+		}
+
+		/* Filled pill CTA — Ink on the honey bar */
+		body.home #header.scrolled nav ul li a.say-hello {
+			background: #1A1814;
+			box-shadow: none;
+			color: #FAF9F7;
+		}
+
+		body.home #header.scrolled nav ul li a.say-hello:hover {
+			background: #2e2a25;
+			color: #FAF9F7 !important;
+			box-shadow: none;
+			text-decoration: none;
+		}
+
+	}
+
+	/* Say hi CTA arrow: Ink on the violet button, off-white on the Ink button */
+	body.home #header nav ul li a.say-hello::after {
+		color: #1A1814;
+	}
+
+	body.home #header.scrolled nav ul li a.say-hello::after {
+		color: #FAF9F7;
+	}
+
+	/* Footer in off-white */
+	body.home #footer {
+		background-color: #FAF9F7;
+	}
+
+	/* Tile shadow, readable on the dark background */
+	body.home .tiles article {
+		box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55);
+	}
+
+	body:not(.is-touch).home .tiles article:hover {
+		box-shadow: 0 22px 48px rgba(0, 0, 0, 0.7);
+	}
+
+	/* Other pages: flip dark content text to off-white on the dark theme */
+	body.home .about-heading,
+	body.home .about-text p,
+	body.home .sayhello-sub,
+	body.home .sayhello-form-label,
+	body.home .sayhello-field-label {
+		color: #FAF9F7;
+	}
+
+	/* About name label in the brand purple */
+	body.home .about-label {
+		color: #A599F2;
+	}
+
+	/* Keep Ink text where it sits on a light (honey) element */
+	body.home .sayhello-highlight {
+		color: #1A1814;
+	}
+
+	/* Per-page nav hover colour (About / Archive) */
+	body.p2 #header nav ul li a:not(.say-hello):hover,
+	body.p2 #header.scrolled nav ul li a:not(.say-hello):hover {
+		color: #FAF9F7 !important;
+	}
+
+	body.p3 #header nav ul li a:not(.say-hello):hover,
+	body.p3 #header.scrolled nav ul li a:not(.say-hello):hover {
+		color: #1A1814 !important;
+	}
+
+	/* Already on the Say hi page: hide the CTA in the nav */
+	body.sayhi #header nav ul li:last-child {
+		display: none;
+	}
+
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
 			-moz-animation: none !important;
 			-webkit-animation: none !important;
@@ -495,11 +666,11 @@ input, select, textarea {
 			box-shadow: inset 0 -1px 0 0 #A599F2;
 		}
 
-	input[type="text"],
+	/*input[type="text"],
 	input[type="password"],
 	input[type="email"] {
-		height: 3em;
-	}
+		height: em;
+	} */
 
 	textarea {
 		padding: 0;
@@ -636,20 +807,21 @@ input, select, textarea {
 	.tiles {
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr;
-		gap: 0;
+		gap: 1em;
 		margin: 0;
 	}
 
 		.tiles article {
-			-moz-transition: -moz-transform 0.5s ease, opacity 0.5s ease;
-			-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
-			-ms-transition: -ms-transform 0.5s ease, opacity 0.5s ease;
-			transition: transform 0.5s ease, opacity 0.5s ease;
+			-moz-transition: -moz-transform 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease;
+			-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease;
+			-ms-transition: -ms-transform 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease;
+			transition: transform 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease;
 			position: relative;
 			width: auto;
 			margin: 0;
 			aspect-ratio: 1 / 1;
-			border-radius: 0;
+			border-radius: 1em;
+			box-shadow: 0 10px 30px rgba(26, 24, 20, 0.12);
 			overflow: hidden;
 		}
 
@@ -778,6 +950,14 @@ input, select, textarea {
 					}
 
 
+			body:not(.is-touch) .tiles article:hover {
+				-moz-transform: translateY(-6px);
+				-webkit-transform: translateY(-6px);
+				-ms-transform: translateY(-6px);
+				transform: translateY(-6px);
+				box-shadow: 0 18px 42px rgba(26, 24, 20, 0.18);
+			}
+
 			body:not(.is-touch) .tiles article:hover > .image {
 				-moz-transform: scale(1.03);
 				-webkit-transform: scale(1.03);
@@ -862,7 +1042,7 @@ input, select, textarea {
 			.tiles {
 				grid-template-columns: 1fr 1fr;
 				grid-auto-rows: auto;
-				gap: 0;
+				gap: 0.8em;
 				margin: 0;
 			}
 
@@ -885,7 +1065,7 @@ input, select, textarea {
 			.tiles {
 				grid-template-columns: 1fr;
 				grid-auto-rows: auto;
-				gap: 0;
+				gap: 0.8em;
 				margin: 0;
 			}
 
@@ -896,27 +1076,56 @@ input, select, textarea {
 
 		}
 
+/* Tiles scroll reveal (mobile: appear one-by-one on scroll) */
+
+	@keyframes tileReveal {
+		0%   { opacity: 0; transform: translateY(48px); }
+		55%  { opacity: 1; }
+		80%  { transform: translateY(-8px); }
+		100% { opacity: 1; transform: translateY(0); }
+	}
+
+	@media screen and (max-width: 736px) {
+
+		.tiles article {
+			opacity: 0;
+			transform: translateY(48px);
+		}
+
+		.tiles article.reveal-in {
+			animation: tileReveal 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+		}
+
+	}
+
 /* Header */
 
 	#header {
 		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
+		top: 0.9em;
+		left: 1.5em;
+		right: 1.5em;
 		z-index: 10000;
 		background: #F5F0E8;
+		border-radius: 2em;
+		box-shadow: 0 6px 24px rgba(26, 24, 20, 0.1);
 		padding: 0;
 	}
 
 		#header .inner {
 			display: flex;
 			align-items: center;
-			justify-content: space-between;
+			justify-content: center;
+			position: relative;
 			padding: 0 2em;
 			min-height: 4em;
 		}
 
 		#header .logo {
+			position: absolute;
+			left: 2em;
+			top: 50%;
+			transform: translateY(-50%);
 			display: flex;
 			flex-direction: column;
 			line-height: 1.1;
@@ -959,9 +1168,30 @@ input, select, textarea {
 				}
 
 				#header nav ul li a.say-hello {
-					font-style: italic;
-					font-weight: 600;
+					position: relative;
+					display: inline-flex;
+					align-items: center;
+					font-style: normal;
+					font-weight: 700;
+					padding: 0.5em 1.1em;
+					border-radius: 2em;
+					box-shadow: inset 0 0 0 2px #1A1814;
+					transition: color 0.2s ease, box-shadow 0.2s ease;
 				}
+
+					#header nav ul li a.say-hello::after {
+						content: '\2192';
+						display: inline-block;
+						max-width: 0;
+						margin-left: 0;
+						color: #A599F2;
+						font-weight: 700;
+						line-height: 1;
+						opacity: 0;
+						overflow: hidden;
+						transform: translateX(-4px);
+						transition: max-width 0.3s ease, margin-left 0.3s ease, opacity 0.25s ease, transform 0.3s ease;
+					}
 
 				#header nav ul li a:hover {
 					color: #A599F2 !important;
@@ -969,6 +1199,18 @@ input, select, textarea {
 					text-decoration: underline;
 					text-underline-offset: 4px;
 				}
+
+				#header nav ul li a.say-hello:hover {
+					box-shadow: inset 0 0 0 2px #A599F2;
+					text-decoration: none;
+				}
+
+					#header nav ul li a.say-hello:hover::after {
+						max-width: 1.5em;
+						margin-left: 0.5em;
+						opacity: 1;
+						transform: translateX(0);
+					}
 
 				#header nav ul li a.active {
 					color: #A599F2 !important;
@@ -1046,48 +1288,59 @@ input, select, textarea {
 
 	@media screen and (max-width: 736px) {
 
+		/* Solid honey bar on mobile (no opacity) */
+		body.home #header.scrolled {
+			background: #E8C547;
+		}
+
 		#header .inner {
 			padding: 1em 1.2em;
 			position: relative;
+			justify-content: flex-end;
 		}
 
 		#header .logo {
 			position: absolute;
-			left: 50%;
+			left: 1.2em;
 			top: 50%;
-			transform: translate(-50%, -50%);
-			text-align: center;
+			transform: translateY(-50%);
+			text-align: left;
+			z-index: 1002;
 		}
 
 		.hamburger {
 			display: flex;
+			z-index: 1002;
 		}
 
 		.header-msg {
-			display: inline-flex;
+			display: none;
 		}
 
 		#header nav {
 			position: fixed;
 			top: 0;
 			left: 0;
+			right: 0;
 			bottom: 0;
-			width: 85%;
+			width: 100%;
+			height: 100vh;
 			background: #E3D8F2;
-			padding: 5em 2em 2em;
+			padding: 5.5em 1.6em 2em;
 			z-index: 1000;
-			transform: translateX(-100%);
-			transition: transform 0.35s ease;
+			transform: translateY(-100%);
+			transition: transform 0.4s ease;
+			overflow-y: auto;
 		}
 
 		#header nav.is-open {
-			transform: translateX(0);
+			transform: translateY(0);
 		}
 
 		#header nav ul {
 			flex-direction: column;
 			align-items: flex-start;
-			gap: 0.4em;
+			gap: 0.5em;
 		}
 
 		#header nav ul li {
@@ -1096,8 +1349,23 @@ input, select, textarea {
 
 		#header nav ul li a {
 			display: block;
-			padding: 0.5em 0;
-			font-size: 1.5em;
+			padding: 0.3em 0;
+			font-size: 1.4em;
+		}
+
+		#header nav ul li a.say-hello {
+			display: inline-block;
+			margin-top: 1em;
+			padding: 0.5em 1.4em;
+			font-size: 1.1em;
+			border-radius: 2em;
+			background: #1A1814;
+			color: #A599F2;
+			box-shadow: none;
+		}
+
+		#header nav ul li a.say-hello::after {
+			display: none;
 		}
 
 	}
@@ -1115,87 +1383,86 @@ input, select, textarea {
 
 /* Intro animation */
 
-	@keyframes slideFromRight {
-		from { opacity: 0; transform: translateX(100px); }
-		to   { opacity: 1; transform: translateX(0); }
-	}
-
-	@keyframes slideFromLeft {
-		from { opacity: 0; transform: translateX(-100px); }
-		to   { opacity: 1; transform: translateX(0); }
-	}
-
 	@keyframes fadeSlideUp {
-		from { opacity: 0; transform: translateY(20px); }
+		from { opacity: 0; transform: translateY(24px); }
 		to   { opacity: 1; transform: translateY(0); }
 	}
 
-	#intro .intro-greeting {
-		animation: slideFromRight 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+	@keyframes quoteEmphasis {
+		0%, 45% { color: inherit; }
+		100%    { color: #A599F2; }
 	}
 
-	#intro .intro-bio {
-		animation: fadeSlideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.25s both;
+	#intro .quote-text {
+		animation: fadeSlideUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
 	}
 
-	#intro .intro-key {
-		display: inline-block;
-		animation: slideFromLeft 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+	#intro .quote-sign {
+		animation: fadeSlideUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.75s both;
 	}
 
-		#intro .intro-key:nth-of-type(1) { animation-delay: 0.55s; }
-		#intro .intro-key:nth-of-type(2) { animation-delay: 0.7s; }
-		#intro .intro-key:nth-of-type(3) { animation-delay: 0.85s; }
-		#intro .intro-key:nth-of-type(4) { animation-delay: 1s; }
+	#intro .quote-text em {
+		animation: quoteEmphasis 1.4s ease 0.7s both;
+	}
 
 /* Intro */
 
 	#intro {
-		padding: 2em 2.5em 3em 2.5em;
+		padding: 3.5em 2.5em 4.5em 2.5em;
 		text-align: center;
 	}
 
-		#intro .intro-greeting {
-			font-size: clamp(2.4em, 6vw, 4em);
-			font-weight: 700;
-			color: #1A1814;
-			line-height: 1;
-			margin: 0 0 0.4em 0;
-		}
-
-		#intro .intro-bio {
-			font-size: clamp(1em, 1.9vw, 1.35em);
-			font-weight: 400;
-			line-height: 1.5;
-			color: #1A1814;
-			max-width: 28em;
+		#intro .hero-quote {
 			margin: 0 auto;
+			padding: 0;
+			border: 0;
 		}
 
-		#intro .intro-key,
-		#intro .intro-em {
-			font-weight: 700;
+		#intro .quote-text {
+			font-size: clamp(1.9em, 5vw, 3.4em);
+			font-weight: 300;
+			line-height: 1.22;
+			letter-spacing: -0.02em;
+			max-width: min(11em, 100%);
+			margin: 0 auto 0.7em auto;
 		}
+
+			#intro .quote-text em {
+				font-style: normal;
+				font-weight: 400;
+				color: #A599F2;
+			}
+
+		#intro .quote-sign {
+			display: flex;
+			flex-direction: column;
+			gap: 0.15em;
+		}
+
+			#intro .quote-name {
+				font-size: clamp(1em, 1.6vw, 1.25em);
+				font-weight: 600;
+			}
+
+			#intro .quote-role {
+				font-size: clamp(0.85em, 1.2vw, 1em);
+				font-weight: 400;
+				font-style: italic;
+				color: #E8C547;
+			}
 
 	@media screen and (max-width: 736px) {
 
 		#intro {
-			padding: 6em 1.2em 2.5em 1.2em;
+			padding: 7em 1.4em 3em 1.4em;
 		}
 
-		#intro .intro-greeting {
-			font-size: clamp(1.9em, 8vw, 2.7em);
+		#intro .hero-quote {
+			max-width: 100%;
 		}
 
-		#intro .intro-bio {
-			font-size: clamp(0.95em, 4vw, 1.2em);
-			max-width: 26em;
-		}
-
-		#intro .intro-greeting,
-		#intro .intro-bio,
-		#intro .intro-key {
-			animation: none;
+		#intro .quote-text {
+			font-size: clamp(1.7em, 8vw, 2.6em);
 		}
 
 	}
@@ -1203,14 +1470,14 @@ input, select, textarea {
 /* Main */
 
 	#main {
-		padding: 5em 0 4em 0;
+		padding: 6em 0 8em 0;
 		overflow-x: hidden;
 	}
 
 		@media screen and (max-width: 736px) {
 
 			#main {
-				padding: 0em 0 4em 0 ;
+				padding: 0em 0 7em 0 ;
 			}
 
 		}
@@ -1218,7 +1485,7 @@ input, select, textarea {
 /* Footer */
 
 	#footer {
-		padding: 0.3em 0 0.3em 0;
+		padding: 0.75em 0 0.75em 0;
 		background-color: #EDE8DC;
 		position: fixed;
 		bottom: 0;
@@ -1271,8 +1538,9 @@ input, select, textarea {
 		list-style: none;
 		padding: 0;
 		font-size: 0.65em;
-		color: #1A1814;
-		font-weight: 600;
+		color: #999999;
+		font-weight: 500;
+		text-align: center;
 	}
 
 	#footer .footer-available {
@@ -1302,40 +1570,47 @@ input, select, textarea {
 /* Say Hello page */
 
 	#sayhello-intro {
-		padding: 2em 0 2.5em 0;
+		max-width: 68em;
+		margin: 0 auto;
+		padding: 1.2em 0 1em 0;
+		text-align: left;
+	}
+
+	@keyframes sayhelloTitleIn {
+		from { opacity: 0; transform: translateX(40px); }
+		to   { opacity: 1; transform: translateX(0); }
 	}
 
 	#sayhello-intro h1 {
-		font-size: 3.5em;
+		font-size: clamp(2.4em, 6vw, 3.6em);
 		font-weight: 700;
-		line-height: 1;
-		margin-bottom: 0.8em;
-	}
-
-	.sayhello-highlight {
-		background: #E8C547;
-		padding: 0.05em 0.2em;
-		display: inline;
+		line-height: 1.05;
+		letter-spacing: -0.02em;
+		margin-bottom: 0.35em;
+		color: rgba(250, 249, 247, 0.7);
+		animation: sayhelloTitleIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 	}
 
 	.sayhello-sub {
-		font-size: 0.9em;
-		color: #1A1814;
-		line-height: 1.6;
+		font-size: 0.95em;
+		line-height: 1.55;
+		max-width: 30em;
 		margin: 0;
 	}
 
 	#sayhello {
+		max-width: 68em;
+		margin: 0 auto;
 		display: grid;
-		grid-template-columns: 3fr 2fr;
-		gap: 2em;
+		grid-template-columns: 1fr 1fr;
+		gap: 3.5em;
 		align-items: start;
 	}
 
 	.sayhello-image {
 		border-radius: 16px;
 		overflow: hidden;
-		aspect-ratio: 3 / 2;
+		aspect-ratio: 1 / 1;
 	}
 
 	.sayhello-image img {
@@ -1349,7 +1624,7 @@ input, select, textarea {
 		font-size: 0.85em;
 		font-weight: 700;
 		color: #1A1814;
-		margin-bottom: 1.5em;
+		margin-bottom: 0.8em;
 	}
 
 	#sayhello input::placeholder,
@@ -1367,23 +1642,70 @@ input, select, textarea {
 
 	#sayhello form > .fields {
 		width: calc(100% + 1em);
-		margin: -0.4em 0 0.75em -1em;
+		margin: -0.2em 0 0.4em -1em;
 	}
 
 	#sayhello form > .fields > .field {
-		padding: 0.4em 0 0 1em;
+		padding: 0.2em 0 0 1em;
 	}
 
 	#sayhello form > .fields > .field.half {
 		width: calc(50% - 0.5em);
 	}
 
+	.field:not(:first-child):not(.half) {
+		margin-top: 1em;
+	}
+
 #sayhello ul.actions {
 		display: flex;
-		justify-content: flex-end;
+		justify-content: flex-start;
 		margin: 0;
-		margin-top: 3em;
+		margin-top: 2.5em;
 	}
+
+	#sayhello ul.actions li {
+		padding-left: 0;
+	}
+
+	/* Submit pill: like the Say hi CTA — static colour, arrow slides on hover */
+	.submit-cta {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		text-transform: none;
+		letter-spacing: normal;
+		font-weight: 400;
+		padding: 0 1.4em;
+	}
+
+		.primary.submit-cta:hover,
+		.primary.submit-cta:active {
+			background-color: #E8C547;
+			color: #1A1814 !important;
+			box-shadow: none;
+		}
+
+		.submit-cta::after {
+			content: '\2192';
+			display: inline-block;
+			max-width: 0;
+			margin-left: 0;
+			color: #1A1814;
+			font-weight: 700;
+			line-height: 1;
+			opacity: 0;
+			overflow: hidden;
+			transform: translateX(-4px);
+			transition: max-width 0.3s ease, margin-left 0.3s ease, opacity 0.25s ease, transform 0.3s ease;
+		}
+
+		.submit-cta:hover::after {
+			max-width: 1.5em;
+			margin-left: 0.5em;
+			opacity: 1;
+			transform: translateX(0);
+		}
 
 	[data-fs-success] {
 		display: none;
@@ -1446,16 +1768,17 @@ input, select, textarea {
 
 	#about {
 		display: grid;
-		grid-template-columns: 55fr 45fr;
-		min-height: calc(100vh - 9em);
-		margin: 0 -2.5em;
-		gap: 0;
+		grid-template-columns: 1fr 17em;
+		align-items: stretch;
+		gap: 3em;
+		max-width: 64em;
+		margin: 0 auto;
 	}
 
 	.about-text {
-		padding: 3.5em 3em 3.5em 2.5em;
 		display: flex;
 		flex-direction: column;
+		justify-content: center;
 	}
 
 	.about-label {
@@ -1465,7 +1788,7 @@ input, select, textarea {
 		text-transform: uppercase;
 		letter-spacing: 0.15em;
 		color: #1A1814;
-		margin-bottom: 1.5em;
+		margin-bottom: 1em;
 	}
 
 	.about-heading {
@@ -1473,7 +1796,7 @@ input, select, textarea {
 		font-weight: 700;
 		line-height: 1.3;
 		color: #1A1814;
-		margin-bottom: 2em;
+		margin-bottom: 1.2em;
 		text-transform: none;
 		letter-spacing: normal;
 	}
@@ -1482,45 +1805,102 @@ input, select, textarea {
 		font-size: 0.9em;
 		line-height: 1.7;
 		color: #1A1814;
-		margin-bottom: 1.2em;
+		margin-bottom: 1em;
+	}
+
+	.about-text p:last-child {
+		margin-bottom: 0;
 	}
 
 	.about-photo {
 		position: relative;
 		overflow: hidden;
+		border-radius: 16px;
 	}
 
 	.about-photo img {
 		width: 100%;
-		height: 100%;
+		height: 120%;
 		object-fit: cover;
 		object-position: left top;
 	}
 
-	#about-quote {
-		background-color: #E8C547;
-		margin: 0 -2.5em -4em -2.5em;
-		padding: 3em 4em 5em 4em;
+	/* About page — resume (Education / Skills / Experience) */
+	.resume {
+		border-top: solid 1px rgba(250, 249, 247, 0.15);
+		max-width: 64em;
+		margin: 3em auto 0;
+		padding-top: 3em;
+		display: grid;
+		grid-template-columns: repeat(3, max-content);
+		justify-content: start;
+		gap: 4.5em;
 	}
 
-	#about-quote p {
-		font-size: 3.5em;
-		font-weight: 300;
-		line-height: 1.2;
-		color: #F5F0E8;
+	.resume-title {
+		font-size: 0.72em;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.2em;
+		margin: 0 0 1.4em 0;
+	}
+
+	.resume-title::after {
+		content: ' \2193';
+		color: #E8C547;
+	}
+
+	.resume-item {
+		margin-bottom: 1.3em;
+	}
+
+	.resume-item-title {
+		font-size: 0.82em;
+		font-weight: 700;
+		line-height: 1.25;
 		margin: 0;
-		transition: color 0.3s ease;
-		cursor: default;
 	}
 
-	#about-quote p:hover {
-		color: #1A1814;
+	.resume-item-sub {
+		font-size: 0.8em;
+		line-height: 1.25;
+		margin: 0.3em 0 0 0;
+		color: rgba(250, 249, 247, 0.8);
 	}
 
+	.resume-hl {
+		color: #A599F2;
+	}
 
-	#about-quote p em {
+	.resume-item-date {
+		font-size: 0.75em;
 		font-style: italic;
-		font-weight: 300;
+		line-height: 1.3;
+		margin: 0.25em 0 0 0;
+		opacity: 0.55;
+	}
+
+	.resume-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+		.resume-list li {
+			font-size: 0.8em;
+			line-height: 1.7;
+			padding-left: 0;
+			color: rgba(250, 249, 247, 0.8);
+		}
+
+	@media screen and (max-width: 736px) {
+
+		.resume {
+			grid-template-columns: 1fr;
+			gap: 2.2em;
+			padding-top: 2.2em;
+		}
+
 	}
 
 /* ==========================================================================
@@ -1685,6 +2065,27 @@ input, select, textarea {
 		transform: scale(1.02);
 	}
 
+	/* Contained, centred project layout on tablet/desktop (wider side margins) */
+	@media screen and (min-width: 737px) {
+
+		.project-cover {
+			left: auto;
+			right: auto;
+			width: 100%;
+			max-width: 64em;
+			margin: 0 auto 3rem auto;
+		}
+
+		.project-tagline,
+		.project-description,
+		.project-section {
+			max-width: 64em;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+	}
+
 /* ==========================================================================
    Mobile responsive — global + all pages (≤736px and ≤480px)
    ========================================================================== */
@@ -1744,11 +2145,11 @@ input, select, textarea {
 	}
 
 	#header nav ul {
-		gap: 0.9em;
+		gap: 0.7em;
 	}
 
 	#header nav ul li a {
-		font-size: 0.75em;
+		font-size: 1.2em;
 	}
 
 }
@@ -1778,29 +2179,29 @@ input, select, textarea {
 
 	#about {
 		grid-template-columns: 1fr;
-		min-height: auto;
-		margin: 0 -1.25em;
+		margin: 0;
+		gap: 1.8em;
+		padding-top: 5.5em;
 	}
 
 	.about-photo {
+		order: -1;
 		height: auto;
+		aspect-ratio: 9 / 10;
 	}
 
 	.about-photo img {
-		height: auto;
-		object-fit: unset;
+		height: 100%;
+		object-fit: cover;
+		object-position: center 30%;
 	}
 
 	.about-text {
-		padding: 2.5em 1.5em 2em 1.5em;
+		padding: 0;
 	}
 
 	.about-heading {
 		font-size: 1.35em;
-	}
-
-	#about-quote {
-		display: none;
 	}
 
 }
@@ -1808,28 +2209,15 @@ input, select, textarea {
 @media screen and (max-width: 480px) {
 
 	#about {
-		margin: 0 -1em;
-	}
-
-	.about-photo {
-		height: auto;
+		margin: 0;
 	}
 
 	.about-text {
-		padding: 2em 1em 1.5em 1em;
+		padding: 0;
 	}
 
 	.about-heading {
 		font-size: 1.2em;
-	}
-
-	#about-quote {
-		margin: 0 -1em -4em -1em;
-		padding: 1.5em 1em 4em 1em;
-	}
-
-	#about-quote p {
-		font-size: 1.6em;
 	}
 
 }
@@ -1869,8 +2257,12 @@ input, select, textarea {
 
 @media screen and (max-width: 736px) {
 
+	#sayhello-intro {
+		padding: 6em 0 1em 0;
+	}
+
 	#sayhello-intro h1 {
-		font-size: 2.5em;
+		font-size: clamp(2.6em, 11vw, 3.6em);
 	}
 
 	#sayhello {
@@ -1896,7 +2288,7 @@ input, select, textarea {
 @media screen and (max-width: 480px) {
 
 	#sayhello-intro {
-		padding: 1em 0 1.5em 0;
+		padding: 5.5em 0 1em 0;
 	}
 
 	#sayhello-intro h1 {
@@ -1924,6 +2316,7 @@ input, select, textarea {
 
 	.project-cover img {
 		aspect-ratio: 4 / 3;
+		border-radius: 14px;
 	}
 
 	.project-tagline {
@@ -1953,6 +2346,7 @@ input, select, textarea {
 		height: auto;
 		aspect-ratio: 1 / 1;
 		width: 100%;
+		border-radius: 14px;
 	}
 
 }

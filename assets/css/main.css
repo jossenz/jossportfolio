@@ -106,6 +106,8 @@ input, select, textarea {
 
 	html {
 		box-sizing: border-box;
+		background: #1A1814;
+		overscroll-behavior-y: none;
 	}
 
 	*, *:before, *:after {
@@ -114,6 +116,7 @@ input, select, textarea {
 
 	body {
 		background: #F5F0E8;
+		overscroll-behavior-y: none;
 	}
 
 	/* Dark theme — applied site-wide via the "home" body class */
@@ -122,18 +125,37 @@ input, select, textarea {
 		color: #FAF9F7;
 	}
 
-	/* Header: blended/transparent at top, off-white sticky pill once scrolled */
+	/* Header: blended/transparent at top, off-white sticky pill once scrolled.
+	   The frosted background lives on ::before (not on #header itself) because
+	   backdrop-filter on #header would make it the containing block for its
+	   fixed-position mobile menu (nav), breaking that menu's full-viewport
+	   positioning and leaking a sliver of its background above the pill. */
 	body.home #header {
 		background: transparent;
 		box-shadow: none;
-		transition: background-color 0.3s ease, box-shadow 0.3s ease;
+		transition: box-shadow 0.3s ease;
+	}
+
+	body.home #header::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		border-radius: inherit;
+		background: rgba(227, 216, 242, 0.5);
+		opacity: 0;
+		-webkit-backdrop-filter: blur(22px) saturate(140%);
+		backdrop-filter: blur(22px) saturate(140%);
+		transition: opacity 0.3s ease;
+		z-index: -1;
+		pointer-events: none;
 	}
 
 	body.home #header.scrolled {
-		background: rgba(227, 216, 242, 0.5);
 		box-shadow: 0 6px 24px rgba(26, 24, 20, 0.12);
-		-webkit-backdrop-filter: blur(22px) saturate(140%);
-		backdrop-filter: blur(22px) saturate(140%);
+	}
+
+	body.home #header.scrolled::before {
+		opacity: 1;
 	}
 
 	/* Logo swaps with header state (all widths).
@@ -1318,14 +1340,6 @@ input, select, textarea {
 	}
 
 	@media screen and (max-width: 736px) {
-
-		/* Frosted lavender bar on mobile — same blur as desktop.
-		   The blur is only disabled while the drawer is open, so the
-		   full-screen menu stays positioned relative to the viewport. */
-		body.home #header.scrolled.menu-open {
-			-webkit-backdrop-filter: none;
-			backdrop-filter: none;
-		}
 
 		#header .inner {
 			padding: 0 1.2em;

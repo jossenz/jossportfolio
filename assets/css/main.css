@@ -130,18 +130,28 @@ input, select, textarea {
 	}
 
 	body.home #header.scrolled {
-		background: rgba(232, 197, 71, 0.82);
-		box-shadow: 0 6px 24px rgba(26, 24, 20, 0.18);
+		background: rgba(227, 216, 242, 0.5);
+		box-shadow: 0 6px 24px rgba(26, 24, 20, 0.12);
+		-webkit-backdrop-filter: blur(22px) saturate(140%);
+		backdrop-filter: blur(22px) saturate(140%);
 	}
 
-	/* Logo swaps with header state (all widths) */
+	/* Logo swaps with header state (all widths).
+	   The logo is an SVG rendered via CSS mask, tinted with currentColor —
+	   so it picks up Pergamino on the dark bar and Ink once scrolled. */
 	body.home #header .logo {
-		color: #FAF9F7;
+		color: #ECE8DC;
 	}
 
 	body.home #header.scrolled .logo,
 	body.home #header.menu-open .logo {
 		color: #1A1814;
+	}
+
+	/* SVG logo flips from Pergamino to Ink on the light (scrolled) bar */
+	body.home #header.scrolled .logo-mark,
+	body.home #header.menu-open .logo-mark {
+		filter: brightness(0);
 	}
 
 	/* Hamburger swaps with header state (mobile) */
@@ -186,7 +196,7 @@ input, select, textarea {
 		}
 
 		body.home #header nav ul li a.active:hover {
-			color: #A599F2 !important;
+			color: #FAF9F7 !important;
 		}
 
 		body.home #header.scrolled nav ul li a.active {
@@ -272,14 +282,17 @@ input, select, textarea {
 	}
 
 	/* Per-page nav hover colour (About / Archive) */
-	body.p2 #header nav ul li a:not(.say-hello):hover,
+	body.p2 #header nav ul li a:not(.say-hello):hover {
+		color: #FAF9F7 !important;
+	}
+
 	body.p2 #header.scrolled nav ul li a:not(.say-hello):hover {
 		color: #FAF9F7 !important;
 	}
 
 	body.p3 #header nav ul li a:not(.say-hello):hover,
 	body.p3 #header.scrolled nav ul li a:not(.say-hello):hover {
-		color: #1A1814 !important;
+		color: #FAF9F7 !important;
 	}
 
 	/* Already on the Say hi page: hide the CTA in the nav */
@@ -1079,21 +1092,26 @@ input, select, textarea {
 /* Tiles scroll reveal (mobile: appear one-by-one on scroll) */
 
 	@keyframes tileReveal {
-		0%   { opacity: 0; transform: translateY(48px); }
-		55%  { opacity: 1; }
-		80%  { transform: translateY(-8px); }
-		100% { opacity: 1; transform: translateY(0); }
+		0%   { opacity: 0; }
+		100% { opacity: 1; }
 	}
 
 	@media screen and (max-width: 736px) {
 
+		.tiles {
+			gap: 0;
+		}
+
 		.tiles article {
 			opacity: 0;
-			transform: translateY(48px);
+			border-radius: 0;
+			width: 100%;
+			aspect-ratio: 1 / 1;
+			height: auto;
 		}
 
 		.tiles article.reveal-in {
-			animation: tileReveal 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+			animation: tileReveal 1.2s ease both;
 		}
 
 	}
@@ -1140,6 +1158,19 @@ input, select, textarea {
 
 		#header .logo:hover {
 			color: #A599F2 !important;
+		}
+
+		/* SVG wordmark as a background image (loads over file:// too).
+		   Native fill is Pergamino; flipped to Ink via filter when scrolled. */
+		#header .logo .logo-mark {
+			display: block;
+			width: 3em;
+			height: 3em;
+			background-image: url(../../images/LOGO_JOSS.svg);
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: contain;
+			transition: filter 0.2s ease;
 		}
 
 		#header nav ul {
@@ -1194,7 +1225,7 @@ input, select, textarea {
 					}
 
 				#header nav ul li a:hover {
-					color: #A599F2 !important;
+					color: #FAF9F7 !important;
 					border-bottom: none !important;
 					text-decoration: underline;
 					text-underline-offset: 4px;
@@ -1256,7 +1287,7 @@ input, select, textarea {
 	}
 
 	.hamburger.is-open span:nth-child(1) {
-		transform: translateY(7px) rotate(45deg);
+		transform: translateY(6px) rotate(45deg);
 	}
 
 	.hamburger.is-open span:nth-child(2) {
@@ -1264,7 +1295,7 @@ input, select, textarea {
 	}
 
 	.hamburger.is-open span:nth-child(3) {
-		transform: translateY(-7px) rotate(-45deg);
+		transform: translateY(-6px) rotate(-45deg);
 	}
 
 	/* Header message icon */
@@ -1288,29 +1319,54 @@ input, select, textarea {
 
 	@media screen and (max-width: 736px) {
 
-		/* Solid honey bar on mobile (no opacity) */
-		body.home #header.scrolled {
-			background: #E8C547;
+		/* Frosted lavender bar on mobile — same blur as desktop.
+		   The blur is only disabled while the drawer is open, so the
+		   full-screen menu stays positioned relative to the viewport. */
+		body.home #header.scrolled.menu-open {
+			-webkit-backdrop-filter: none;
+			backdrop-filter: none;
 		}
 
 		#header .inner {
-			padding: 1em 1.2em;
+			padding: 0 1.2em;
+			min-height: 0;
+			height: 1.2em;
 			position: relative;
 			justify-content: flex-end;
 		}
 
 		#header .logo {
 			position: absolute;
-			left: 1.2em;
+			left: 1.7em;
 			top: 50%;
 			transform: translateY(-50%);
+			flex-direction: row;
 			text-align: left;
+			font-size: 1.05em;
+			line-height: 1;
 			z-index: 1002;
 		}
 
+		
 		.hamburger {
 			display: flex;
+			width: 20px;
+			height: 11px;
+			gap: 2px;
+			margin-right: 0.55em;
 			z-index: 1002;
+		}
+
+		.hamburger span {
+			width: 20px;
+		}
+
+		.hamburger.is-open span:nth-child(1) {
+			transform: translateY(4px) rotate(45deg);
+		}
+
+		.hamburger.is-open span:nth-child(3) {
+			transform: translateY(-4px) rotate(-45deg);
 		}
 
 		.header-msg {
@@ -1326,7 +1382,10 @@ input, select, textarea {
 			width: 100%;
 			height: 100vh;
 			background: #E3D8F2;
-			padding: 5.5em 1.6em 2em;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			padding: 3em 1.6em 9em;
 			z-index: 1000;
 			transform: translateY(-100%);
 			transition: transform 0.4s ease;
@@ -1339,18 +1398,20 @@ input, select, textarea {
 
 		#header nav ul {
 			flex-direction: column;
-			align-items: flex-start;
+			align-items: center;
 			gap: 0.5em;
 		}
 
 		#header nav ul li {
 			width: 100%;
+			text-align: center;
 		}
 
 		#header nav ul li a {
 			display: block;
 			padding: 0.3em 0;
 			font-size: 1.4em;
+			text-align: center;
 		}
 
 		#header nav ul li a.say-hello {
@@ -1815,7 +1876,7 @@ input, select, textarea {
 	.about-photo {
 		position: relative;
 		overflow: hidden;
-		border-radius: 16px;
+		border-radius: 0;
 	}
 
 	.about-photo img {
@@ -1823,6 +1884,19 @@ input, select, textarea {
 		height: 120%;
 		object-fit: cover;
 		object-position: left top;
+		opacity: 0;
+		filter: blur(24px);
+		transform: scale(1.06);
+	}
+
+	/* Reveal from blurred to sharp when scrolled into view */
+	.about-photo.reveal-in img {
+		animation: aboutPhotoReveal 2.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+	}
+
+	@keyframes aboutPhotoReveal {
+		0%   { opacity: 0; filter: blur(24px); transform: scale(1.06); }
+		100% { opacity: 1; filter: blur(0);    transform: scale(1); }
 	}
 
 	/* About page — resume (Education / Skills / Experience) */
@@ -1835,6 +1909,7 @@ input, select, textarea {
 		grid-template-columns: repeat(3, max-content);
 		justify-content: start;
 		gap: 4.5em;
+		text-align: left;
 	}
 
 	.resume-title {
@@ -1893,12 +1968,34 @@ input, select, textarea {
 			color: rgba(250, 249, 247, 0.8);
 		}
 
+	/* About page — text fades/slides up as it scrolls into view */
+	body.about .about-label,
+	body.about .about-heading,
+	body.about .about-text p,
+	body.about .resume-col {
+		opacity: 0;
+		transform: translateY(22px);
+		transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+		            transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+
+	body.about .about-label.reveal-in,
+	body.about .about-heading.reveal-in,
+	body.about .about-text p.reveal-in,
+	body.about .resume-col.reveal-in {
+		opacity: 1;
+		transform: none;
+	}
+
 	@media screen and (max-width: 736px) {
 
 		.resume {
 			grid-template-columns: 1fr;
 			gap: 2.2em;
 			padding-top: 2.2em;
+			margin-left: 0;
+			margin-right: 0;
+			text-align: left;
 		}
 
 	}
@@ -1984,6 +2081,19 @@ input, select, textarea {
 		object-position: center top;
 	}
 
+	/* Project 2 hero: match the photo's native 3:2 ratio so nothing is
+	   cropped and the cards stay centred and fully visible */
+	body.p2 .project-cover img {
+		aspect-ratio: 3 / 2;
+		object-position: center center;
+	}
+
+	/* Don't pull the cover up under the header — that clipped the top of
+	   the photo above the viewport edge. Keep it fully in view. */
+	body.p2 .project-cover {
+		margin-top: 0;
+	}
+
 	.project-description {
 		display: flex;
 		gap: 4rem;
@@ -2048,8 +2158,8 @@ input, select, textarea {
 
 	.image-grid {
 		display: flex;
-		gap: 16px;
-		margin-bottom: 16px;
+		gap: 0;
+		margin-bottom: 0;
 	}
 
 	.image-grid img {
@@ -2059,6 +2169,16 @@ input, select, textarea {
 		aspect-ratio: 1 / 1;
 		object-fit: cover;
 		border-radius: 0;
+		opacity: 0;
+		transform: translateY(26px);
+		transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+		            transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+
+	/* Reveal each gallery image as it scrolls into view */
+	.image-grid img.reveal-in {
+		opacity: 1;
+		transform: none;
 	}
 
 	.image-grid img:hover {
@@ -2177,17 +2297,23 @@ input, select, textarea {
 
 @media screen and (max-width: 736px) {
 
-	#about {
-		grid-template-columns: 1fr;
-		margin: 0;
-		gap: 1.8em;
+	/* Dissolve the #about grid so text, resume and photo all become
+	   siblings in the .inner flow — lets the photo drop to the very end */
+	body.about #main > .inner {
+		display: flex;
+		flex-direction: column;
 		padding-top: 5.5em;
 	}
 
+	body.about #about {
+		display: contents;
+	}
+
 	.about-photo {
-		order: -1;
+		order: 99;
 		height: auto;
-		aspect-ratio: 9 / 10;
+		aspect-ratio: 4 / 5;
+		margin-top: 2.5em;
 	}
 
 	.about-photo img {
@@ -2316,7 +2442,7 @@ input, select, textarea {
 
 	.project-cover img {
 		aspect-ratio: 4 / 3;
-		border-radius: 14px;
+		border-radius: 0;
 	}
 
 	.project-tagline {
@@ -2339,14 +2465,19 @@ input, select, textarea {
 
 	.image-grid {
 		flex-direction: column;
-		gap: 12px;
+		gap: 0;
 	}
 
 	.image-grid img {
 		height: auto;
 		aspect-ratio: 1 / 1;
 		width: 100%;
-		border-radius: 14px;
+		border-radius: 0;
+	}
+
+	/* No hover movement on touch devices */
+	.image-grid img:hover {
+		transform: none;
 	}
 
 }

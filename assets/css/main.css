@@ -317,9 +317,14 @@ input, select, textarea {
 		color: #FAF9F7 !important;
 	}
 
-	/* Already on the Say hi page: hide the CTA in the nav */
-	body.sayhi #header nav ul li:last-child {
-		display: none;
+	/* Already on the Say hi page: hide the CTA in the nav (desktop/tablet only —
+	   on mobile it stays in the drawer so there's still a way back to the page). */
+	@media screen and (min-width: 737px) {
+
+		body.sayhi #header nav ul li:last-child {
+			display: none;
+		}
+
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -1428,6 +1433,13 @@ input, select, textarea {
 			text-align: center;
 		}
 
+		/* Current-page link in the drawer: Ink, not purple */
+		#header nav ul li a.active:not(.say-hello) {
+			color: #1A1814 !important;
+			text-decoration: underline;
+			text-underline-offset: 4px;
+		}
+
 		#header nav ul li a.say-hello {
 			display: inline-block;
 			margin-top: 1em;
@@ -1437,6 +1449,13 @@ input, select, textarea {
 			background: #1A1814;
 			color: #A599F2;
 			box-shadow: none;
+		}
+
+		/* Say hi! pill stays Lavender-on-Ink even when marked active
+		   (e.g. opening the drawer while already on the Say hi page) */
+		#header nav ul li a.say-hello.active {
+			color: #A599F2 !important;
+			text-decoration: none;
 		}
 
 		#header nav ul li a.say-hello::after {

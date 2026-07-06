@@ -275,9 +275,9 @@ input, select, textarea {
 		background-color: #FAF9F7;
 	}
 
-	/* Tile shadow, readable on the dark background */
+	/* Tiles sit flush against each other — no resting shadow to break the mosaic */
 	body.home .tiles article {
-		box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55);
+		box-shadow: none;
 	}
 
 	body:not(.is-touch).home .tiles article:hover {
@@ -847,8 +847,9 @@ input, select, textarea {
 	.tiles {
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr;
-		gap: 1em;
-		margin: 0;
+		gap: 0;
+		max-width: 94%;
+		margin: 0 auto;
 	}
 
 		.tiles article {
@@ -860,8 +861,8 @@ input, select, textarea {
 			width: auto;
 			margin: 0;
 			aspect-ratio: 1 / 1;
-			border-radius: 1em;
-			box-shadow: 0 10px 30px rgba(26, 24, 20, 0.12);
+			border-radius: 0;
+			box-shadow: none;
 			overflow: hidden;
 		}
 
@@ -1054,7 +1055,7 @@ input, select, textarea {
 		@media screen and (max-width: 1280px) {
 
 			.tiles {
-				margin: 0;
+				margin: 0 auto;
 			}
 
 				.tiles article {
@@ -1067,7 +1068,7 @@ input, select, textarea {
 		@media screen and (max-width: 980px) {
 
 			.tiles {
-				margin: 0;
+				margin: 0 auto;
 			}
 
 				.tiles article {
@@ -1082,8 +1083,8 @@ input, select, textarea {
 			.tiles {
 				grid-template-columns: 1fr 1fr;
 				grid-auto-rows: auto;
-				gap: 0.8em;
-				margin: 0;
+				gap: 0;
+				margin: 0 auto;
 			}
 
 				.tiles article {
@@ -1105,8 +1106,8 @@ input, select, textarea {
 			.tiles {
 				grid-template-columns: 1fr;
 				grid-auto-rows: auto;
-				gap: 0.8em;
-				margin: 0;
+				gap: 0;
+				margin: 0 auto;
 			}
 
 				.tiles article {

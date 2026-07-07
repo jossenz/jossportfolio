@@ -46,7 +46,6 @@
           <nav>
             <ul>
               <li><a href="aboutme.html">About</a></li>
-              <li><a href="archive.html">Archive</a></li>
               <li><a href="sayhello.html" class="say-hello">Say hi!</a></li>
             </ul>
           </nav>
@@ -67,83 +66,333 @@
       <!-- Main -->
       <div id="main">
         <div class="inner">
-          <!-- Cover image -->
-          <div class="project-cover">
-            <img src="images/pic04.jpg" alt="Proyecto 4" />
+          <!-- 1. OPENING -->
+          <div class="project-section cs-section">
+            <span class="cs-label">1. Opening</span>
+
+            <!-- Project tagline -->
+            <div class="project-tagline">
+              <p>
+                How might we help young people in Madrid explore
+                <em>who they are</em> — before deciding
+                <em>what they want to be</em>?
+              </p>
+            </div>
+
+            <!-- Description -->
+            <div class="project-description">
+              <div class="project-description-meta">
+                <h1>Método MAD</h1>
+                <dl>
+                  <dt>Client</dt>
+                  <dd>Academic brief: Ayuntamiento de Madrid</dd>
+
+                  <dt>Industry</dt>
+                  <dd>Public sector, youth guidance</dd>
+
+                  <dt>Location</dt>
+                  <dd>Madrid, Spain</dd>
+
+                  <dt>Year</dt>
+                  <dd>2025</dd>
+
+                  <dt>Tools</dt>
+                  <dd>Figma + Desk research</dd>
+                </dl>
+              </div>
+              <div class="project-description-body">
+                <p class="project-description-tagline">
+                  Método MAD is a vocational guidance app designed for the
+                  Ayuntamiento de Madrid. MAD stands for Mapea, Aprende, Decide
+                  — and doubles as a nod to Madrid's airport code. It helps
+                  teenagers aged 16–20 discover their strengths, values, and
+                  possible paths through games, not forms.
+                </p>
+                <p>
+                  The project covered the full UX process: desk research with
+                  real data sources, two user personas, empathy mapping,
+                  competitive analysis, problem definition, user flows, and a
+                  mid-fidelity prototype from the first statistic to the final
+                  screen.
+                </p>
+              </div>
+            </div>
           </div>
 
-          <!-- Project tagline -->
-          <div class="project-tagline">
-            <p>
-              ¿Cómo capturar la <em>esencia</em> de una noche de verano
-              castellana en un sistema visual <em>reconocible</em> y
-              coleccionable?
+          <!-- 2. RESEARCH -->
+          <div class="project-section cs-section">
+            <span class="cs-label">2. Research</span>
+            <h2 class="cs-h2">
+              The problem was real before we designed anything
+            </h2>
+            <p class="cs-body">
+              Before touching Figma, we looked at what was actually happening.
+              Three findings shaped the whole project.
+            </p>
+
+            <div class="cs-stats">
+              <div class="cs-card">
+                <p class="cs-stat-num">39%</p>
+                <p class="cs-stat-title">of Gen Z feel anxious frequently</p>
+                <p class="cs-stat-sub">
+                  about important decisions — more than double the rate of
+                  Boomers. (Barna Group)
+                </p>
+              </div>
+              <div class="cs-card">
+                <p class="cs-stat-num">114K</p>
+                <p class="cs-stat-title">
+                  young people guided by Oficina Joven
+                </p>
+                <p class="cs-stat-sub">
+                  in Madrid in 2024–25 — only in person, no digital platform
+                  available.
+                </p>
+              </div>
+              <div class="cs-card">
+                <p class="cs-stat-num">91%</p>
+                <p class="cs-stat-title">
+                  of Gen Z want work with real purpose
+                </p>
+                <p class="cs-stat-sub">
+                  aligned to their values — not just a job. (Deloitte Spain)
+                </p>
+              </div>
+            </div>
+
+            <div class="cs-card cs-table-wrap">
+              <p class="cs-table-title">Competitive gap — existing tools</p>
+              <table class="cs-table">
+                <thead>
+                  <tr>
+                    <th>Platform</th>
+                    <th>Gamified</th>
+                    <th>In Spanish</th>
+                    <th>For teens</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>TestVocacional.app</td>
+                    <td class="cs-no">✗</td>
+                    <td class="cs-ok">✓</td>
+                    <td class="cs-mid">~</td>
+                  </tr>
+                  <tr>
+                    <td>Strive (AI)</td>
+                    <td class="cs-mid">~</td>
+                    <td class="cs-no">✗</td>
+                    <td class="cs-mid">~</td>
+                  </tr>
+                  <tr>
+                    <td>ASPA Madrid</td>
+                    <td class="cs-no">✗</td>
+                    <td class="cs-ok">✓</td>
+                    <td class="cs-ok">✓</td>
+                  </tr>
+                  <tr>
+                    <td>Euroguidance España</td>
+                    <td class="cs-no">✗</td>
+                    <td class="cs-ok">✓</td>
+                    <td class="cs-mid">~</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- 3. WHO WE DESIGNED FOR -->
+          <div class="project-section cs-section">
+            <span class="cs-label">3. Who we designed for</span>
+            <h2 class="cs-h2">
+              Two real types of teenagers, one shared feeling
+            </h2>
+            <p class="cs-body">
+              Both of them are doing fine on paper. Neither of them knows what
+              they actually want.
+            </p>
+
+            <div class="image-grid cs-cols-2 cs-natural">
+              <img
+                src="images/proyecto4/userpersona1.jpg"
+                alt="User persona A — Javi Romero, 17, South Madrid"
+              />
+              <img
+                src="images/proyecto4/userpersona2.jpg"
+                alt="User persona B — Sara Martínez, 16, Northeast Madrid"
+              />
+            </div>
+          </div>
+
+          <!-- 4. EMPATHY MAP -->
+          <div class="project-section cs-section">
+            <span class="cs-label">4. Empathy map</span>
+            <h2 class="cs-h2">What's really going on inside</h2>
+            <p class="cs-body">
+              Beyond the personas, we mapped the emotional landscape — what they
+              think, feel, say and do when facing vocational decisions.
+            </p>
+
+            <div class="image-grid cs-cols-2 cs-natural cs-light-each">
+              <img
+                src="images/proyecto4/empathy_map1.png"
+                alt="Empathy map — Javi Romero"
+              />
+              <img
+                src="images/proyecto4/empathy_map2.png"
+                alt="Empathy map — Sara Martínez"
+              />
+            </div>
+            <p class="cs-caption">Empathy maps — Javi &amp; Sara</p>
+          </div>
+
+          <!-- 5. PROBLEM DEFINITION -->
+          <div class="project-section cs-section">
+            <span class="cs-label">5. Problem definition</span>
+            <h2 class="cs-h2">
+              The real problem wasn't lack of information. It was lack of
+              self-knowledge.
+            </h2>
+
+            <div class="cs-hmw">
+              <p>
+                How might we help teenagers aged 16–20 in Madrid explore their
+                identity, strengths and values progressively and without
+                pressure — so they can make more conscious decisions about their
+                future, whether that's university, entrepreneurship or
+                autonomous learning?
+              </p>
+            </div>
+
+            <p class="cs-body">
+              Existing tools treated vocational guidance as a one-time test.
+              Método MAD treats it as an ongoing process — something that grows
+              with the user over months, not minutes. We also identified a key
+              insight: vocational guidance can be a form of mental-health
+              prevention, not a response to a crisis.
             </p>
           </div>
 
-          <!-- Description -->
-          <div class="project-description">
-            <div class="project-description-meta">
-              <h1>Nombre del proyecto</h1>
-              <dl>
-                <dt>Client</dt>
-                <dd>Nombre del cliente</dd>
+          <!-- 6. THE SOLUTION -->
+          <div class="project-section cs-section">
+            <span class="cs-label">6. The solution</span>
+            <h2 class="cs-h2">
+              An app that guides you without telling you what to do
+            </h2>
+            <p class="cs-body">
+              Método MAD works through daily micro-games, a progressive
+              vocational profile and three equal paths — Formación, Emprende,
+              Aprende — none treated as better than the others. The more you use
+              it, the more it knows about you. Distribution matters too: the app
+              is reached through the Ayuntamiento's youth portal, where young
+              madrileños already look for guidance.
+            </p>
 
-                <dt>Industry</dt>
-                <dd>Sector, Categoría</dd>
-
-                <dt>Location</dt>
-                <dd>Ciudad, País</dd>
-
-                <dt>Year</dt>
-                <dd>2025</dd>
-
-                <dt>Reel</dt>
-                <dd><a href="#">Click here</a></dd>
-              </dl>
+            <div class="image-grid cs-cols-3 cs-natural">
+              <img
+                src="images/proyecto4/portal_madrid.png"
+                alt="Entry point — Método MAD inside the madrid.es youth portal"
+              />
+              <img
+                src="images/proyecto4/Exploracion_inicial.png"
+                alt="Initial exploration — ¿Qué áreas te llaman?"
+              />
+              <img
+                src="images/proyecto4/Logro_desbloqueado.png"
+                alt="Achievement unlocked — Primera semana completada"
+              />
             </div>
-            <div class="project-description-body">
-              <p class="project-description-tagline">
-                For the moments you'll want back someday.
-              </p>
-              <p>
-                Flamante Films is a small Austin-based wedding film team focused
-                on creating films that feel emotional, intentional, and true to
-                the people in front of the camera. Andrés, the owner, is
-                personally the one filming every wedding featured throughout the
-                website and social media.
-              </p>
-              <p>
-                They don't believe in filming weddings in mass or outsourcing
-                couples to random filmmakers. Keeping the number of weddings
-                limited allows them to give every couple a more personal
-                experience and maintain the quality and care that goes into
-                every film.
-              </p>
-              <p>
-                Every collection is built around the couple's timeline, their
-                venue, and what matters most to them, so the coverage fits their
-                day naturally. For the branding, the goal was to bring in a
-                little spark — keeping it warm and cinematic, but with a more
-                playful and spontaneous energy that "matches" the spirit behind
-                the name.
-              </p>
+            <p class="cs-caption">
+              Entry point on madrid.es · Initial exploration · Achievement
+              system
+            </p>
+          </div>
+
+          <!-- USER FLOW -->
+          <div class="project-section cs-section">
+            <div class="image-grid cs-natural cs-light">
+              <img
+                src="images/proyecto4/User_flow.png"
+                alt="User flow — a recurring session in Método MAD"
+              />
+            </div>
+            <p class="cs-caption">User flow — a recurring session</p>
+          </div>
+
+          <!-- 7. DESIGN DECISIONS -->
+          <div class="project-section cs-section">
+            <span class="cs-label">7. Design decisions</span>
+            <h2 class="cs-h2">Three decisions that shaped everything</h2>
+
+            <div class="cs-decisions">
+              <div class="cs-card">
+                <span class="cs-decision-icon">◐</span>
+                <p class="cs-decision-title">Color and typography</p>
+                <p class="cs-decision-body">
+                  Lavender as primary works in both light and dark mode — modern
+                  without being aggressive. Clash Display for headings:
+                  editorial personality without feeling childish. General Sans
+                  for body: readable on small screens, balances the display
+                  type.
+                </p>
+              </div>
+              <div class="cs-card">
+                <span class="cs-decision-icon">↻</span>
+                <p class="cs-decision-title">Navigation and flow</p>
+                <p class="cs-decision-body">
+                  Daily streaks and micro-games reduce the pressure of big
+                  decisions — borrowed from Duolingo. Three equal paths because
+                  we wanted no route to feel like the "correct" one. University
+                  is valid. So is everything else.
+                </p>
+              </div>
+              <div class="cs-card">
+                <span class="cs-decision-icon">◎</span>
+                <p class="cs-decision-title">Visual voice and tone</p>
+                <p class="cs-decision-body">
+                  The app talks to you, not at you. Questions read like
+                  conversations, and the choice cards signal a safe, low-stakes
+                  space. Inspired by Headspace's emotional warmth and
+                  Observatorio Gen Z's editorial tone.
+                </p>
+              </div>
             </div>
           </div>
 
-          <!-- Image gallery -->
-          <div class="project-section">
-            <div class="image-grid">
-              <img src="images/pic05.jpg" alt="" />
-              <img src="images/pic06.jpg" alt="" />
-              <img src="images/pic01.jpg" alt="" />
-            </div>
-            <div class="image-grid">
-              <img src="images/pic02.jpg" alt="" />
-            </div>
-            <div class="image-grid">
-              <img src="images/pic03.jpg" alt="" />
-              <img src="images/pic04.jpg" alt="" />
+          <!-- 8. REFLECTIONS -->
+          <div class="project-section cs-section">
+            <span class="cs-label">8. Reflections</span>
+            <h2 class="cs-h2">What I learned and what I'd do differently</h2>
+            <p class="cs-body">
+              This project taught me that the best UX decisions come from the
+              emotional context, not just the functional one. If I were to
+              continue, I'd add a social layer — connecting with people going
+              through the same process was one of the key unmet needs. I'd also
+              run usability tests with real teenagers to validate the game
+              mechanics before assuming they work. And I'd push the gamification
+              even further: adding illustrated, friendlier elements that match
+              the kind of user we designed for — bringing warmth, dialling down
+              the educational tone, and getting closer to the goal of being a
+              genuinely useful tool for new generations.
+            </p>
+
+            <div class="cs-card cs-closing">
+              <div>
+                <p class="cs-closing-label cs-ok">✓ Resolved</p>
+                <ul>
+                  <li>Anxiety around big vocational decisions</li>
+                  <li>Cold, one-time vocational tests</li>
+                  <li>Lack of digital guidance in Spanish for teens</li>
+                </ul>
+              </div>
+              <div>
+                <p class="cs-closing-label cs-no">✗ Out of scope</p>
+                <ul>
+                  <li>Family pressure dynamics</li>
+                  <li>Social / community features</li>
+                  <li>Real-time counselor support</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -156,10 +405,13 @@
             <ul class="copyright">
               <li>
                 Jossen Zambrano<span class="footer-extra">
-                  &nbsp;|&nbsp; jossenzr@gmail.com</span
+                  &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+                  jossenzr@gmail.com</span
                 >
-                &nbsp;|&nbsp; &copy; 2026<span class="footer-extra">
-                  &nbsp;|&nbsp; 📍 Based in Madrid.</span
+                &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; &copy;
+                2026<span class="footer-extra">
+                  &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; Based in
+                  Madrid.</span
                 >
               </li>
             </ul>
@@ -181,6 +433,14 @@
                     rel="noopener"
                     class="icon brands style2 fa-linkedin"
                     ><span class="label">LinkedIn</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="mailto:jossenzr@gmail.com"
+                    class="icon style2 fa-envelope"
+                    aria-label="Say hi"
+                    ><span class="label">Say hi</span></a
                   >
                 </li>
               </ul>

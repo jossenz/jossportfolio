@@ -277,13 +277,9 @@ input, select, textarea {
 		background-color: #FAF9F7;
 	}
 
-	/* Tiles sit flush against each other — no resting shadow to break the mosaic */
+	/* Tiles sit flush against each other — no shadow to break the mosaic */
 	body.home .tiles article {
 		box-shadow: none;
-	}
-
-	body:not(.is-touch).home .tiles article:hover {
-		box-shadow: 0 22px 48px rgba(0, 0, 0, 0.7);
 	}
 
 	/* Other pages: flip dark content text to off-white on the dark theme */
@@ -855,10 +851,10 @@ input, select, textarea {
 	}
 
 		.tiles article {
-			-moz-transition: -moz-transform 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease;
-			-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease;
-			-ms-transition: -ms-transform 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease;
-			transition: transform 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease;
+			-moz-transition: -moz-transform 0.5s ease, opacity 0.5s ease;
+			-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+			-ms-transition: -ms-transform 0.5s ease, opacity 0.5s ease;
+			transition: transform 0.5s ease, opacity 0.5s ease;
 			position: relative;
 			width: auto;
 			margin: 0;
@@ -869,10 +865,6 @@ input, select, textarea {
 		}
 
 			.tiles article > .image {
-				-moz-transition: -moz-transform 0.5s ease;
-				-webkit-transition: -webkit-transform 0.5s ease;
-				-ms-transition: -ms-transform 0.5s ease;
-				transition: transform 0.5s ease;
 				position: absolute;
 				top: 0;
 				left: 0;
@@ -888,14 +880,15 @@ input, select, textarea {
 					width: 100%;
 					height: 100%;
 					object-fit: cover;
-					filter: blur(6px);
-					transform: scale(1.05);
-					transition: filter 0.5s ease, transform 0.5s ease;
+					border-radius: 0;
 				}
 
+				/* Uniform dark scrim, same intensity on every tile: appears
+				   instantly on hover (no fade) so the photo stays legible
+				   underneath instead of being replaced/blurred (matches
+				   lisasuefischer.com) */
 				.tiles article > .image:before {
 					pointer-events: none;
-					transition: background-color 0.5s ease, opacity 0.5s ease;
 					content: '';
 					display: block;
 					position: absolute;
@@ -903,7 +896,7 @@ input, select, textarea {
 					left: 0;
 					width: 100%;
 					height: 100%;
-					background-color: transparent;
+					background-color: rgba(0, 0, 0, 0.65);
 					opacity: 0;
 					z-index: 1;
 				}
@@ -929,6 +922,8 @@ input, select, textarea {
 					z-index: 2;
 				}
 
+			/* Name + type appear instantly with the scrim (no fade), then
+			   ease up slightly into place — matches lisasuefischer.com */
 			.tiles article > a {
 				display: -moz-flex;
 				display: -webkit-flex;
@@ -946,10 +941,10 @@ input, select, textarea {
 				-webkit-justify-content: flex-end;
 				-ms-justify-content: flex-end;
 				justify-content: flex-end;
-				-moz-transition: background-color 0.5s ease, -moz-transform 0.5s ease;
-				-webkit-transition: background-color 0.5s ease, -webkit-transform 0.5s ease;
-				-ms-transition: background-color 0.5s ease, -ms-transform 0.5s ease;
-				transition: background-color 0.5s ease, transform 0.5s ease;
+				-moz-transition: -moz-transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+				-webkit-transition: -webkit-transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+				-ms-transition: -ms-transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+				transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 				position: absolute;
 				top: 0;
 				left: 0;
@@ -962,6 +957,11 @@ input, select, textarea {
 				text-align: left;
 				text-decoration: none;
 				z-index: 3;
+				opacity: 0;
+				-moz-transform: translateY(10px);
+				-webkit-transform: translateY(10px);
+				-ms-transform: translateY(10px);
+				transform: translateY(10px);
 			}
 
 				.tiles article > a > :last-child {
@@ -992,15 +992,9 @@ input, select, textarea {
 				}
 
 				.tiles article > a .content {
-					-moz-transition: max-height 0.5s ease, opacity 0.5s ease;
-					-webkit-transition: max-height 0.5s ease, opacity 0.5s ease;
-					-ms-transition: max-height 0.5s ease, opacity 0.5s ease;
-					transition: max-height 0.5s ease, opacity 0.5s ease;
 					width: 100%;
-					max-height: 0;
 					line-height: 1.5;
 					margin-top: 0.5em;
-					opacity: 0;
 				}
 
 					/* Project type in small caps */
@@ -1017,38 +1011,16 @@ input, select, textarea {
 					}
 
 
-			body:not(.is-touch) .tiles article:hover {
-				-moz-transform: translateY(-6px);
-				-webkit-transform: translateY(-6px);
-				-ms-transform: translateY(-6px);
-				transform: translateY(-6px);
-				box-shadow: 0 18px 42px rgba(26, 24, 20, 0.18);
-			}
-
-			body:not(.is-touch) .tiles article:hover > .image {
-				-moz-transform: scale(1.03);
-				-webkit-transform: scale(1.03);
-				-ms-transform: scale(1.03);
-				transform: scale(1.03);
-			}
-
-				body:not(.is-touch) .tiles article:hover > .image img {
-					filter: blur(0);
-					transform: scale(1);
-				}
-
-				body:not(.is-touch) .tiles article:hover > .image:before {
-					background-color: #000000;
-					opacity: 0.5;
-				}
-
-				body:not(.is-touch) .tiles article:hover > .image:after {
-					opacity: 0;
-				}
-
-			body:not(.is-touch) .tiles article:hover .content {
-				max-height: 15em;
+			body:not(.is-touch) .tiles article:hover > .image:before {
 				opacity: 1;
+			}
+
+			body:not(.is-touch) .tiles article:hover > a {
+				opacity: 1;
+				-moz-transform: translateY(0);
+				-webkit-transform: translateY(0);
+				-ms-transform: translateY(0);
+				transform: translateY(0);
 			}
 
 		* + .tiles {
@@ -1063,20 +1035,30 @@ input, select, textarea {
 			opacity: 0;
 		}
 
-		body.is-touch .tiles article .content {
-			max-height: 15em;
+		/* Touch devices have no hover: keep name/type/scrim always shown */
+		body.is-touch .tiles article > a {
+			opacity: 1;
+			-moz-transform: translateY(0);
+			-webkit-transform: translateY(0);
+			-ms-transform: translateY(0);
+			transform: translateY(0);
+		}
+
+		body.is-touch .tiles article > .image:before {
 			opacity: 1;
 		}
 
-		body.is-touch .tiles article > .image img {
-			filter: blur(0);
-			transform: scale(1);
+		/* Locked (coming soon) tiles: stay blurred everywhere */
+		.tiles article.locked > .image img {
+			filter: blur(6px);
+			transform: scale(1.05);
 		}
 
-		/* Locked (coming soon) tiles: stay blurred everywhere */
-		body:not(.is-touch) .tiles article.locked:hover > .image img,
-		body.is-touch .tiles article.locked > .image img {
-			filter: blur(6px);
+		/* Noches de Verano tile: nudge the crop left so the left-most tower
+		   isn't cut off, and zoom in slightly so the image fully bleeds to
+		   the tile edges (no hairline gap against the neighbouring tiles) */
+		.tiles article.style1 > .image img {
+			object-position: 8% center;
 			transform: scale(1.05);
 		}
 
@@ -1085,11 +1067,6 @@ input, select, textarea {
 			font-size: 0.9em;
 			margin-left: 0.5em;
 			vertical-align: 0.04em;
-		}
-
-		body.is-touch .tiles article > .image:before {
-			background-color: #000000;
-			opacity: 0.5;
 		}
 
 		@media screen and (max-width: 1280px) {
@@ -1132,13 +1109,6 @@ input, select, textarea {
 					width: auto;
 					margin: 0;
 				}
-
-					.tiles article:hover > .image {
-						-moz-transform: scale(1.0);
-						-webkit-transform: scale(1.0);
-						-ms-transform: scale(1.0);
-						transform: scale(1.0);
-					}
 
 		}
 
@@ -1581,6 +1551,13 @@ input, select, textarea {
 				font-weight: 600;
 			}
 
+				#intro .quote-name img {
+					height: 5em;
+					width: auto;
+					display: inline-block;
+					vertical-align: middle;
+				}
+
 			#intro .quote-role {
 				font-size: clamp(0.85em, 1.2vw, 1em);
 				font-weight: 400;
@@ -1758,6 +1735,31 @@ input, select, textarea {
 		line-height: 1.55;
 		max-width: 30em;
 		margin: 0;
+	}
+
+	/* Typewriter: text types itself out, then a caret keeps blinking.
+	   Width is the text's own measured length (11.15em) — "ch" would use
+	   the "0" glyph as its unit, which overshoots badly on a proportional
+	   font with lots of narrow letters, leaving the caret stranded past
+	   the last character. */
+	@keyframes sayhelloTyping {
+		from { width: 0; }
+		to   { width: 11.15em; }
+	}
+
+	@keyframes sayhelloCaret {
+		50% { border-color: transparent; }
+	}
+
+	.typewriter {
+		display: block;
+		overflow: hidden;
+		white-space: nowrap;
+		width: 11.15em;
+		border-right: 2px solid #A599F2;
+		animation:
+			sayhelloTyping 1.6s steps(25, end) 0.6s both,
+			sayhelloCaret 0.75s step-end infinite;
 	}
 
 	#sayhello {
@@ -2257,6 +2259,43 @@ input, select, textarea {
 		margin-bottom: 3rem;
 	}
 
+	.project-cta {
+		text-align: center;
+		margin: 1rem 0 5rem;
+	}
+
+	/* More projects: lets visitors keep browsing at the end of a case
+	   study instead of having to go back to the home tiles via the logo */
+	.more-projects {
+		margin-top: 15rem;
+		padding-top: 15rem;
+		border-top: 1px solid rgba(250, 249, 247, 0.1);
+	}
+
+	/* Mobile fallback: no room to repeat the whole tile grid on small
+	   screens, so swap it for a single pill linking back to all projects */
+	.more-projects-cta {
+		display: none;
+	}
+
+	@media screen and (max-width: 736px) {
+
+		.more-projects {
+			margin-top: 4rem;
+			padding-top: 3rem;
+		}
+
+		.more-projects .tiles {
+			display: none;
+		}
+
+		.more-projects-cta {
+			display: block;
+			text-align: center;
+		}
+
+	}
+
 	.image-grid {
 		display: flex;
 		gap: 0;
@@ -2282,8 +2321,10 @@ input, select, textarea {
 		transform: none;
 	}
 
-	.image-grid img:hover {
-		transform: scale(1.02);
+	/* Icon sheet's artwork sits left-of-centre in its own canvas; shift the
+	   crop window right so the icons land centred in the square tile */
+	.image-grid img.obj-shift-left {
+		object-position: 60% center;
 	}
 
 	/* Contained, centred project layout on tablet/desktop (wider side margins) */
@@ -2307,22 +2348,37 @@ input, select, textarea {
 
 	}
 
+	/* "More projects" tiles at the bottom of each project page: align to
+	   the same side margins as the rest of that project's content. Home
+	   page tiles keep their own max-width: 94% inset, untouched. */
+	@media screen and (min-width: 737px) {
+
+		.more-projects .tiles {
+			max-width: 64em;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+	}
+
 /* Case study — Método MAD (proyecto4) */
 
 	.cs-section {
-		margin-bottom: 4.5rem;
+		margin-bottom: 0.5rem;
 	}
 
 	.cs-label {
 		display: block;
 		font-size: 0.75em;
-		font-weight: 400;
+		font-weight: 700;
 		text-transform: uppercase;
 		letter-spacing: 0.15em;
 		color: #A599F2;
-		padding-bottom: 0.8em;
+		padding-top: 1.5em;
+		padding-bottom: 1em;
 		border-bottom: 1px solid rgba(250, 249, 247, 0.15);
-		margin-bottom: 2em;
+		margin-bottom: 2.5em;
+		text-align: center;
 	}
 
 	.cs-h2 {
@@ -2333,6 +2389,7 @@ input, select, textarea {
 		text-transform: none;
 		letter-spacing: normal;
 		margin-bottom: 0.8em;
+		text-align: center;
 	}
 
 	.cs-body {
@@ -2340,8 +2397,9 @@ input, select, textarea {
 		line-height: 1.8;
 		color: #FAF9F7;
 		opacity: 0.85;
-		margin-bottom: 2em;
+		margin: 0 auto 2em auto;
 		max-width: 46em;
+		text-align: center;
 	}
 
 	.cs-card {
@@ -2349,6 +2407,7 @@ input, select, textarea {
 		border: 1px solid rgba(250, 249, 247, 0.14);
 		border-radius: 1em;
 		padding: 1.5em;
+		text-align: center;
 	}
 
 	.cs-stats {
@@ -2387,10 +2446,12 @@ input, select, textarea {
 
 	.cs-table-title {
 		font-size: 0.7em;
+		font-weight: 700;
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
 		color: #A599F2;
-		margin: 0 0 1.2em;
+		margin: 0 0 1.5em;
+		text-align: center;
 	}
 
 	.cs-table {
@@ -2402,7 +2463,7 @@ input, select, textarea {
 	}
 
 	.cs-table th {
-		text-align: left;
+		text-align: center;
 		font-weight: 600;
 		color: #FAF9F7;
 		opacity: 0.6;
@@ -2410,12 +2471,8 @@ input, select, textarea {
 		border-bottom: 1px solid rgba(250, 249, 247, 0.2);
 	}
 
-	.cs-table th:not(:first-child),
-	.cs-table td:not(:first-child) {
-		text-align: center;
-	}
-
 	.cs-table td {
+		text-align: center;
 		padding: 0.6em 0;
 		color: #FAF9F7;
 		opacity: 0.85;
@@ -2480,9 +2537,11 @@ input, select, textarea {
 	}
 
 	.cs-hmw {
-		border-left: 3px solid #E8C547;
-		padding: 0.4em 0 0.4em 1.5em;
-		margin: 0 0 2em;
+		text-align: center;
+		border-top: 3px solid #E8C547;
+		padding: 1.5em 0 0;
+		margin: 0 auto 2em;
+		max-width: 40em;
 	}
 
 	.cs-hmw p {
@@ -2490,8 +2549,7 @@ input, select, textarea {
 		font-style: italic;
 		line-height: 1.7;
 		color: #FAF9F7;
-		max-width: 40em;
-		margin: 0;
+		margin: 0 auto;
 	}
 
 	.cs-decisions {
@@ -2501,26 +2559,55 @@ input, select, textarea {
 		margin-bottom: 2em;
 	}
 
+	/* Light cards here so the palette swatch (a white PNG) sits flush
+	   instead of floating in a dark box */
+	.cs-decisions .cs-card {
+		background: #FAF9F7;
+		border-color: rgba(26, 24, 20, 0.1);
+	}
+
 	.cs-decision-icon {
 		display: block;
 		font-size: 1.3em;
-		color: #E8C547;
+		color: #A599F2;
 		margin-bottom: 0.6em;
 	}
 
 	.cs-decision-title {
 		font-size: 0.9em;
 		font-weight: 700;
-		color: #FAF9F7;
+		color: #1A1814;
 		margin: 0 0 0.6em;
 	}
 
 	.cs-decision-body {
 		font-size: 0.78em;
 		line-height: 1.7;
-		color: #FAF9F7;
-		opacity: 0.7;
+		color: #1A1814;
+		opacity: 0.75;
 		margin: 0;
+	}
+
+	/* Color palette / typography / tone swatches, centered in place of a
+	   text decision card, sitting close under the title. All three share
+	   a fixed-height media slot so images of different aspect ratios
+	   still line up with each other across the row. */
+	.cs-decision-palette .cs-decision-title {
+		margin-bottom: 0.2em;
+	}
+
+	.cs-decision-media {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 10.5em;
+	}
+
+	.cs-decision-media img {
+		width: 100%;
+		max-width: 14em;
+		display: block;
+		margin: 0 auto;
 	}
 
 	.cs-closing {
@@ -2881,11 +2968,6 @@ input, select, textarea {
 		aspect-ratio: 1 / 1;
 		width: 100%;
 		border-radius: 0;
-	}
-
-	/* No hover movement on touch devices */
-	.image-grid img:hover {
-		transform: none;
 	}
 
 }

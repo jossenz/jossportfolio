@@ -2269,6 +2269,12 @@ input, select, textarea {
 		margin: 1rem 0 5rem;
 	}
 
+	/* Método MAD: extra breathing room above the prototype CTA, away from
+	   the closing "Resolved / Out of scope" card */
+	body.p4 .project-cta {
+		margin-top: 9rem;
+	}
+
 	/* More projects: lets visitors keep browsing at the end of a case
 	   study instead of having to go back to the home tiles via the logo */
 	.more-projects {
@@ -2281,6 +2287,24 @@ input, select, textarea {
 	   screens, so swap it for a single pill linking back to all projects */
 	.more-projects-cta {
 		display: none;
+	}
+
+	/* Violet instead of honey: on pages with another honey CTA right above
+	   (e.g. "Try the prototype"), two same-colour pills back to back read
+	   as one block. */
+	.more-projects-cta .button.primary {
+		background-color: #A599F2;
+		color: #1A1814 !important;
+	}
+
+	.more-projects-cta .button.primary:hover {
+		background-color: #E8C547;
+		color: #1A1814 !important;
+		box-shadow: 0 4px 16px rgba(232, 197, 71, 0.4);
+	}
+
+	.more-projects-cta .button.primary:active {
+		background-color: #8a7de0;
 	}
 
 	@media screen and (max-width: 736px) {
@@ -2369,7 +2393,14 @@ input, select, textarea {
 /* Case study — Método MAD (proyecto4) */
 
 	.cs-section {
-		margin-bottom: 0.5rem;
+		margin-bottom: 5rem;
+	}
+
+	/* Lo-fi prototype: smaller block, doesn't need as much air as the
+	   heavier text sections around it */
+	.cs-section.cs-tight {
+		margin-top: -2rem;
+		margin-bottom: 2.5rem;
 	}
 
 	.cs-label {
@@ -2508,23 +2539,27 @@ input, select, textarea {
 		margin-right: auto;
 	}
 
-	/* Empathy maps: two separate light cards (like the personas), slightly
-	   narrower than the full column */
+	/* Empathy maps: two separate columns, slightly narrower than the full
+	   width. Images are transparent PNGs drawn to sit directly on the dark
+	   page background — no card/backdrop behind them. */
 	.image-grid.cs-cols-2.cs-light-each {
 		max-width: 50em;
+		gap: 3em;
 		margin-left: auto;
 		margin-right: auto;
-	}
-
-	.image-grid.cs-light-each img {
-		background: #FAF9F7;
-		padding: 1.25em;
 	}
 
 	.image-grid.cs-natural img {
 		width: 100%;
 		aspect-ratio: auto;
 		object-fit: contain;
+	}
+
+	/* Lo-fi wireframes: smaller than the full column, centered */
+	.image-grid.cs-wireframes {
+		max-width: 40em;
+		margin-left: auto;
+		margin-right: auto;
 	}
 
 	/* Light panel behind diagrams drawn in dark ink (transparent PNGs) */
@@ -2615,38 +2650,6 @@ input, select, textarea {
 		margin: 0 auto;
 	}
 
-	.cs-closing {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 2em;
-		margin-bottom: 2em;
-	}
-
-	.cs-closing-label {
-		font-size: 0.8em;
-		font-weight: 700;
-		margin: 0 0 0.6em;
-	}
-
-	.cs-closing ul {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-	}
-
-	.cs-closing li {
-		font-size: 0.8em;
-		line-height: 1.6;
-		color: #FAF9F7;
-		opacity: 0.75;
-		padding: 0.2em 0;
-	}
-
-	.cs-closing li::before {
-		content: '\2192  ';
-		opacity: 0.5;
-	}
-
 	.cs-footnote {
 		font-size: 0.72em;
 		color: #FAF9F7;
@@ -2658,7 +2661,6 @@ input, select, textarea {
 
 		.cs-stats,
 		.cs-decisions,
-		.cs-closing,
 		.image-grid.cs-cols-2,
 		.image-grid.cs-cols-3 {
 			grid-template-columns: 1fr;

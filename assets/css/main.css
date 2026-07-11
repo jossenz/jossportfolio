@@ -1044,8 +1044,12 @@ input, select, textarea {
 			transform: translateY(0);
 		}
 
+		/* Touch devices show the scrim permanently (no hover to reveal it) —
+		   lighter than the desktop hover veil so it doesn't sit too dark
+		   at rest on mobile */
 		body.is-touch .tiles article > .image:before {
 			opacity: 1;
+			background-color: rgba(0, 0, 0, 0.4);
 		}
 
 		/* Locked (coming soon) tiles: stay blurred everywhere */
@@ -1458,6 +1462,7 @@ input, select, textarea {
 			margin-top: 1em;
 			padding: 0.5em 1.4em;
 			font-size: 1.1em;
+			font-weight: 400;
 			border-radius: 2em;
 			background: #1A1814;
 			color: #A599F2;

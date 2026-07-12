@@ -2300,21 +2300,36 @@ input, select, textarea {
 		margin: 1rem 0 5rem;
 	}
 
-	/* Método MAD: extra breathing room above the prototype CTA, away from
-	   the closing "Resolved / Out of scope" card */
-	body.p4 .project-cta {
+	/* Método MAD: extra breathing room above the closing prototype CTA,
+	   away from the Reflections text. Only the last of the two CTAs on
+	   this page (top one keeps the default spacing). */
+	body.p4 .project-cta:last-of-type {
 		margin-top: 9rem;
 	}
 
-	/* Bitty: center the "Get font" pill in the gap between the last video
-	   and the "More projects" divider line */
-	body.p3 .project-cta {
+	/* Bitty: center the closing "Get font" pill in the gap between the
+	   last video and the "More projects" divider line. Only the last of
+	   the two CTAs on this page (top one keeps the default spacing). */
+	body.p3 .project-cta:last-of-type {
 		margin-top: 8.9rem;
 		margin-bottom: 1rem;
 	}
 
 	body.p3 .more-projects {
 		margin-top: 7.3rem;
+	}
+
+	/* Audiosistemas: center the closing "View brand guideline" pill in the
+	   gap between the last image and the "More projects" divider line.
+	   Only the last of the two CTAs on this page (top one keeps the
+	   default spacing). */
+	body.p2 .project-cta:last-of-type {
+		margin-top: 8.1875rem;
+		margin-bottom: 1rem;
+	}
+
+	body.p2 .more-projects {
+		margin-top: 8.1875rem;
 	}
 
 	/* More projects: lets visitors keep browsing at the end of a case

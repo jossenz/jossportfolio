@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Reveal project gallery images one-by-one as they scroll into view.
-  var galleryImgs = document.querySelectorAll('.image-grid img');
+  var galleryImgs = document.querySelectorAll('.image-grid img, .image-grid video');
   if (galleryImgs.length) {
     if ('IntersectionObserver' in window) {
       var ioGallery = new IntersectionObserver(function (entries) {

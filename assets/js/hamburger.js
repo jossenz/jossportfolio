@@ -69,6 +69,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Reveal About text blocks (label, heading, paragraphs, resume columns)
   // one-by-one as they scroll into view.
+  var startTypewriter = function (el) {
+    var text = el.getAttribute('data-text') || '';
+    var i = 0;
+    var timer = setInterval(function () {
+      i++;
+      el.textContent = text.slice(0, i);
+      if (i >= text.length) clearInterval(timer);
+    }, 38);
+  };
+
   var revealText = document.querySelectorAll(
     '.about-label, .about-heading, .about-text p, .resume-col'
   );
@@ -78,6 +88,8 @@ document.addEventListener('DOMContentLoaded', function () {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add('reveal-in');
+            var typewriter = entry.target.querySelector('.about-typewriter');
+            if (typewriter) setTimeout(function () { startTypewriter(typewriter); }, 450);
             ioText.unobserve(entry.target);
           }
         });
@@ -85,6 +97,8 @@ document.addEventListener('DOMContentLoaded', function () {
       revealText.forEach(function (el) { ioText.observe(el); });
     } else {
       revealText.forEach(function (el) { el.classList.add('reveal-in'); });
+      var staticTypewriter = document.querySelector('.about-typewriter');
+      if (staticTypewriter) staticTypewriter.textContent = staticTypewriter.getAttribute('data-text');
     }
   }
 

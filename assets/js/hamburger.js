@@ -119,4 +119,23 @@ document.addEventListener('DOMContentLoaded', function () {
       galleryImgs.forEach(function (el) { el.classList.add('reveal-in'); });
     }
   }
+
+  // Project CTAs (Get font, Try the prototype, View brand guideline): the
+  // arrow gives a quick one-off peek as soon as the button scrolls into view.
+  var ctaButtons = document.querySelectorAll('.project-cta .submit-cta');
+  if (ctaButtons.length) {
+    if ('IntersectionObserver' in window) {
+      var ioCta = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('cta-wink');
+            ioCta.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.6 });
+      ctaButtons.forEach(function (el) { ioCta.observe(el); });
+    } else {
+      ctaButtons.forEach(function (el) { el.classList.add('cta-wink'); });
+    }
+  }
 });
